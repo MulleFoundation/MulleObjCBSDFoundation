@@ -11,12 +11,19 @@ endif()
 # contents selected with patternfile ??-source--sources
 #
 set( SOURCES
-src/MulleObjCOSFoundation.m
+src/_MulleGMTTimeZone+BSD.m
+src/NSDate+BSD.m
+src/NSDateFormatter+BSD.m
+src/NSLocale+BSD.m
+src/NSProcessInfo+BSD.m
+src/NSTask+BSD.m
+src/NSTimeZone+BSD.m
+src/mulle-bsd-tm.c
 )
 
 #
 # contents selected with patternfile ??-source--stage2-sources
 #
 set( STAGE2_SOURCES
-src/MulleObjCDeps+MulleObjCOSFoundation.m
+src/MulleObjCDeps+MulleObjCBSDFoundation.m
 )

@@ -20,8 +20,8 @@ src
 # contents selected with patternfile ??-header--private-generated-headers
 #
 set( PRIVATE_GENERATED_HEADERS
-src/reflect/_MulleObjCOSFoundation-import-private.h
-src/reflect/_MulleObjCOSFoundation-include-private.h
+src/reflect/_MulleObjCBSDFoundation-import-private.h
+src/reflect/_MulleObjCBSDFoundation-include-private.h
 )
 
 #
@@ -36,10 +36,10 @@ src/generic/include-private.h
 # contents selected with patternfile ??-header--public-generated-headers
 #
 set( PUBLIC_GENERATED_HEADERS
-src/reflect/_MulleObjCOSFoundation-export.h
-src/reflect/_MulleObjCOSFoundation-import.h
-src/reflect/_MulleObjCOSFoundation-include.h
-src/reflect/_MulleObjCOSFoundation-provide.h
+src/reflect/_MulleObjCBSDFoundation-export.h
+src/reflect/_MulleObjCBSDFoundation-import.h
+src/reflect/_MulleObjCBSDFoundation-include.h
+src/reflect/_MulleObjCBSDFoundation-provide.h
 )
 
 #
@@ -54,7 +54,6 @@ src/generic/include.h
 # contents selected with patternfile ??-header--public-headers
 #
 set( PUBLIC_HEADERS
-src/MulleObjCDeps+MulleObjCOSFoundation.h
-src/MulleObjCOSFoundation.h
+src/mulle-bsd-tm.h
 )
 
