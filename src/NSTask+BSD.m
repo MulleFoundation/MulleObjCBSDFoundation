@@ -37,79 +37,14 @@
 // other files in this library
 
 // other libraries of MulleObjCPosixFoundation
-#import <MulleObjCOSBaseFoundation/NSTask-Private.h>
-
-// std-c and dependencies
-#include <signal.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
 
 
 @implementation NSTask( BSD)
 
 @dependency NSTask( Posix);
 
-
-- (void) _signal:(int) a_signal
-{
-   switch( _status)
-   {
-      default :
-         MulleObjCThrowInternalInconsistencyException( @"task not started");
-         break;
-
-      case _NSTaskIsPresumablyRunning :
-         NSParameterAssert( _pid);
-         kill( _pid, a_signal);
-
-      case _NSTaskHasTerminated :
-         break;
-   }
-}
-
-
-
-- (void) terminate
-{
-   [self _signal:SIGTERM];
-}
-
-
-- (void) interrupt
-{
-   [self _signal:SIGINT];
-}
-
-
-- (BOOL) suspend
-{
-   [self _signal:SIGSTOP];
-   return( YES);
-}
-
-
-- (BOOL) resume
-{
-   [self _signal:SIGCONT];
-   return( YES);
-}
-
-
-- (NSTaskTerminationReason) terminationReason
-{
-   switch( _status)
-   {
-      default :
-         MulleObjCThrowInternalInconsistencyException( @"task not terminated yet");
-
-      case _NSTaskHasTerminated :
-         break;
-   }
-
-   if( WIFEXITED( _terminationStatus))
-      return( NSTaskTerminationReasonExit);
-   return( NSTaskTerminationReasonUncaughtSignal);
-}
+//
+// process control is implemented generically in NSTask( Posix)
+//
 
 @end
