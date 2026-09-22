@@ -1,0 +1,34 @@
+{
+   "name" : "MulleObjCBSDFoundation",
+   "version" : "0.29.0",
+   "description" : "This is a [mulle-sde](https://mulle-sde.github.io/) project.",
+   "keywords" : [],
+   "license" : "UNLICENSED",
+   "repo" : "MulleFoundation/MulleObjCBSDFoundation",
+   "src" : [
+      "src/generic/import-private.h",
+      "src/generic/import.h",
+      "src/generic/include-private.h",
+      "src/generic/include.h",
+      "src/mulle-bsd-tm.c",
+      "src/mulle-bsd-tm.h",
+      "src/MulleObjCDeps+MulleObjCBSDFoundation.m",
+      "src/NSDate+BSD.m",
+      "src/NSDateFormatter+BSD.m",
+      "src/NSLocale+BSD.m",
+      "src/NSProcessInfo+BSD.m",
+      "src/NSTask+BSD.m",
+      "src/NSTimeZone+BSD.m",
+      "src/reflect/objc-deps.inc",
+      "src/reflect/_MulleObjCBSDFoundation-export.h",
+      "src/reflect/_MulleObjCBSDFoundation-import-private.h",
+      "src/reflect/_MulleObjCBSDFoundation-import.h",
+      "src/reflect/_MulleObjCBSDFoundation-include-private.h",
+      "src/reflect/_MulleObjCBSDFoundation-include.h",
+      "src/reflect/_MulleObjCBSDFoundation-provide.h",
+      "src/_MulleGMTTimeZone+BSD.m"
+   ],
+   "dependencies" : {
+      "OS-Split/MulleObjCPosixFoundation": "*"
+   }
+}

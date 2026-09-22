@@ -39,6 +39,7 @@
 
 // std-c and dependencies
 #include <langinfo.h>
+#include <xlocale.h>
 
 
 static id    mulle_localeconv_value( locale_t locale, int code)

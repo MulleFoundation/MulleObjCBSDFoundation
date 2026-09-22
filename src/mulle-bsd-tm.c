@@ -46,6 +46,19 @@
 #include <xlocale.h>
 
 
+// timegm is a BSD/GNU extension, so the UTC conversion lives in the BSD
+// platform library and not in MulleObjCPosixFoundation
+time_t   mulle_posix_tm_get_time( struct tm *tm)
+{
+   struct tm   tmp;
+
+   if( ! tm)
+      return( 0);
+
+   tmp = *tm;
+   return( timegm( &tmp));
+}
+
 
 void   mulle_bsd_tm_invalidate( struct tm *tm)
 {
