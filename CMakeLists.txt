@@ -14,6 +14,20 @@ include( Environment)
 
 include( Files)
 
+### Platform gate
+#
+# This project only provides BSD code, which Darwin and the *BSDs build on. On
+# any other target platform it must still configure harmlessly, so it can sit
+# in a cross-platform craft order (see REPOS). Clearing the sources makes
+# Library.cmake emit an empty INTERFACE library: nothing is compiled, linked or
+# installed, but the target still exists for a linking consumer.
+#
+if( NOT APPLE AND NOT CMAKE_SYSTEM_NAME MATCHES "BSD|DragonFly")
+   message( STATUS "${PROJECT_NAME}: not BSD, building to nothing")
+   set( SOURCES)
+   set( STAGE2_SOURCES)
+endif()
+
 ### Library
 
 if( HEADERS_PHASE)

@@ -75,10 +75,7 @@ static id   newLocaleByQuery( Class self, locale_t base)
 
    name = queryLocaleName( LC_ALL_MASK, base);
    if( ! name)
-   {
-      [self release];
       return( nil);
-   }
 
    return( [[self alloc] initWithLocaleIdentifier:name]);
 }
@@ -102,30 +99,11 @@ static id   newLocaleByQuery( Class self, locale_t base)
 }
 
 
-static id   query_info( int code, locale_t locale)
-{
-   NSString   *s;
-   NSArray    *components;
-   int        offset;
-
-   offset = 0;
-   switch( code)
-   {
-   default               : return( nil);
-   case QUERY_COLLATION  : return( queryLocaleName( LC_COLLATE_MASK, locale));
-   case QUERY_IDENTIFIER : return( queryLocaleName( LC_ALL_MASK, locale));
-   case QUERY_SCRIPT     : return( nil);
-   case QUERY_VARIANT    : ++offset;
-   case QUERY_LANGUAGE   : s = queryLocaleName( LC_CTYPE_MASK, locale); break;
-   }
-
-   components = [s componentsSeparatedByString:@"."];
-   if( offset < (int) [components count])
-      return( [components objectAtIndex:offset]);
-   return( nil);
-}
-
-
+// Only keys that genuinely need a querylocale() / localeconv() call are
+// answered here. The language, script, variant and collation identifier
+// follow from the identifier alone (a locale keeps the identifier it was
+// created with even when the OS has no data for it and falls back to "C"),
+// so they are answered platform independently by NSLocale.
 - (id) _localeInfoForKey:(id) key
 {
    struct mulle_locale_key_info   info;
@@ -138,9 +116,6 @@ static id   query_info( int code, locale_t locale)
    {
    case IDENTIFIER_INFO :
       return( _identifier);
-
-   case QUERY_INFO :
-      return( query_info( info.code, _xlocale));
 
    case LANG_INFO  :
       s = nl_langinfo_l( info.code, _xlocale);
