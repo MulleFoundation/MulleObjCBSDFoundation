@@ -3,7 +3,7 @@
    "version" : "0.29.0",
    "description" : "This is a [mulle-sde](https://mulle-sde.github.io/) project.",
    "keywords" : [],
-   "license" : "UNLICENSED",
+   "license" : "BSD-3-Clause",
    "repo" : "MulleFoundation/MulleObjCBSDFoundation",
    "src" : [
       "src/generic/import-private.h",
@@ -29,6 +29,6 @@
       "src/_MulleGMTTimeZone+BSD.m"
    ],
    "dependencies" : {
-      "OS-Split/MulleObjCPosixFoundation": "*"
+      "MulleFoundation/MulleObjCPosixFoundation": "*"
    }
 }
